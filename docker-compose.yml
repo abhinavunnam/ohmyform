@@ -18,6 +18,8 @@ services:
       MONGODB_URI: mongodb://mongo/ohmyform
       MAILER_URI: smtp://mail:1025
       PORT: 5000
+        #    env_file:
+        #      - common.env
     links:
       - mongo
       - redis

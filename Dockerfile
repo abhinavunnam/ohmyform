@@ -41,12 +41,23 @@ FROM node:12-alpine
 WORKDIR /usr/src/app
 COPY --from=app /usr/src/app /usr/src/app
 RUN addgroup --gid 9999 ohmyform && adduser -D --uid 9999 -G ohmyform ohmyform
+#ENV PORT=3000 \
+#    SECRET_KEY=ChangeMe
+#    CREATE_ADMIN=FALSE \
+#    ADMIN_EMAIL=admin@ohmyform.com \
+#    ADMIN_USERNAME=root \
+#    ADMIN_PASSWORD=root
 ENV PORT=3000 \
-    SECRET_KEY=ChangeMe \
-    CREATE_ADMIN=FALSE \
-    ADMIN_EMAIL=admin@ohmyform.com \
-    ADMIN_USERNAME=root \
-    ADMIN_PASSWORD=root
+    SECRET_KEY=DonotTellItAnyone \
+    NODE_ENV=secure \
+    CREATE_ADMIN=TRUE \
+    MAILER_FROM=defaultEmailForMailing@gmail.com \
+    ADMIN_EMAIL=gaurav111986@gmail.com \
+    ADMIN_USERNAME=defaultUser \
+    ADMIN_PASSWORD=default \
+    LOGIN_NOTE="WELCOME TO FORM FILLING EXPERIENCE" \
+    DEFAULT_ROLE=admin \
+    HIDE_CONTRIB=TRUE
 
 EXPOSE 3000
 USER ohmyform
